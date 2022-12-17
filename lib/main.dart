@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           background: Container(
             color: const Color(0xFFF5F5F5),
           ))),
-      title: 'Flutter Demo',
+      title: 'Bible Daily',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
