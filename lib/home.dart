@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _onPost() async {
+    final nav = Navigator.of(context);
     final user = FirebaseAuth.instance.currentUser;
 
     final data = {
@@ -49,9 +50,17 @@ class _HomePageState extends State<HomePage> {
 
     final database = FirebaseFirestore.instance;
     await database.collection('posts').doc().set(data);
+
+    final posts = await _getPosts();
+
+    nav.pop();
+    setState(() {
+      _posts = posts;
+    });
   }
 
   Future<void> _onCheckIn() async {
+    final nav = Navigator.of(context);
     final user = FirebaseAuth.instance.currentUser;
 
     final data = {
@@ -63,6 +72,13 @@ class _HomePageState extends State<HomePage> {
 
     final database = FirebaseFirestore.instance;
     await database.collection('posts').doc().set(data);
+
+    final posts = await _getPosts();
+
+    nav.pop();
+    setState(() {
+      _posts = posts;
+    });
   }
 
   Future<void> _addPost() async {
